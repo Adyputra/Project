@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".Main2Activity">
+    tools:context=".Main2Activity"
+    android:background="@color/purple">
 
 
 
@@ -21,10 +22,11 @@
             android:text="Register Akun"
             android:textSize="30sp"
             android:textStyle="bold"
-            android:textColor="@android:color/holo_green_light"
-            android:fontFamily="@font/font"
+            android:textColor="#fff"
+            android:fontFamily="@font/roboto_bold"
             android:id="@+id/textView"
             android:gravity="center"
+            android:background="@drawable/bg"
             android:layout_marginBottom="20dp"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -33,6 +35,7 @@
             android:layout_marginTop="10dp">
 
             <EditText
+                android:background="#fff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/EditTextFullName"
@@ -49,6 +52,7 @@
             android:layout_marginTop="10dp">
 
             <EditText
+                android:background="#fff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText_Email"
@@ -69,11 +73,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
+                android:background="#fff"
                 android:textSize="14sp"
                 android:id="@+id/editText_Password"
                 android:layout_below="@+id/editText_Email"
                 android:inputType="textPassword"
-                android:hint="Masukkan Kata Sandi"/>
+                android:hint="Masukkan Kata Sandi"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,6 +93,7 @@
             android:layout_marginBottom="20dp">
 
             <EditText
+                android:background="#fff"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/editText_RePassword"
@@ -115,7 +122,8 @@
             android:layout_height="wrap_content"
             android:text="Sudah memiliki akun ?"
             android:layout_below="@+id/button_signup"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/textViewL"
@@ -126,7 +134,7 @@
             android:gravity="center"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
-            android:textColor="@android:color/holo_green_dark"/>
+            android:textColor="@android:color/white"/>
 
     </LinearLayout>
 
