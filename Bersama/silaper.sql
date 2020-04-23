@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Apr 2020 pada 10.16
+-- Waktu pembuatan: 23 Apr 2020 pada 10.19
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.2
 
