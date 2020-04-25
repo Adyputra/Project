@@ -31,14 +31,7 @@
                                 Register Account
                             </button>
                             <hr>
-                            <a href="index.html" class="btn btn-google btn-user btn-block">
-                                <i class="fab fa-google fa-fw"></i> Register with Google
-                            </a>
                         </form>
-                        <hr>
-                        <div class="text-center">
-                            <a class="small" href="forgot-password.html">Forgot Password?</a>
-                        </div>
                         <div class="text-center">
                             <a class="small" href="<?= base_url('index.php/Auth'); ?>">Already have an account? Login!</a>
                         </div>

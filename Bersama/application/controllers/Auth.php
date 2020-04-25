@@ -10,6 +10,7 @@ class Auth extends CI_Controller
     }
     public function index()
     {
+        $this->goToDefaultPage();
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         if ($this->form_validation->run() == false) {
@@ -65,6 +66,7 @@ class Auth extends CI_Controller
 
     public function registration()
     {
+        $this->goToDefaultPage();
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[tbadmin.email]', [
             'is_unique' => 'This email has already registered!'
@@ -105,5 +107,19 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert
         alert-success" role="alert">You have been logged out! </div>');
         redirect('auth');
+    }
+
+    public function blocked()
+    {
+        $this->load->view('auth/blocked');
+    }
+
+    public function goToDefaultPage()
+    {
+        if ($this->session->userdata('role_id') == 1) {
+            redirect('admin');
+        } else if ($this->session->userdata('role_id') == 2) {
+            redirect('karyawan');
+        }
     }
 }
