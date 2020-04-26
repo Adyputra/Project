@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Apr 2020 pada 10.19
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Waktu pembuatan: 26 Apr 2020 pada 07.53
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -56,17 +56,17 @@ INSERT INTO `tbadmin` (`id`, `name`, `email`, `image`, `password`, `role_id`, `i
 --
 
 CREATE TABLE `tbcustomer` (
-  `Id` int(11) NOT NULL,
-  `Nama` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbcustomer`
 --
 
-INSERT INTO `tbcustomer` (`Id`, `Nama`, `Email`, `Password`) VALUES
+INSERT INTO `tbcustomer` (`id`, `nama`, `email`, `password`) VALUES
 (1, 'Bro', 'bro@gmail.com', '12345'),
 (2, 'Yoks', 'yoks@gmail.com', '00000'),
 (3, 'Zur', 'zur@gmail.com', '121212'),
@@ -79,18 +79,18 @@ INSERT INTO `tbcustomer` (`Id`, `Nama`, `Email`, `Password`) VALUES
 --
 
 CREATE TABLE `tbkalender` (
-  `Id_Kalender` int(11) NOT NULL,
-  `Image` varchar(255) NOT NULL,
-  `Nama_Kalender` varchar(255) NOT NULL,
-  `Deskripsi` varchar(255) NOT NULL,
-  `Harga` int(11) NOT NULL
+  `id_kalender` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `nama_kalender` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbkalender`
 --
 
-INSERT INTO `tbkalender` (`Id_Kalender`, `Image`, `Nama_Kalender`, `Deskripsi`, `Harga`) VALUES
+INSERT INTO `tbkalender` (`id_kalender`, `image`, `nama_kalender`, `deskripsi`, `harga`) VALUES
 (1, 'default.jpg', 'Kalender 1', 'Kalender dijual satuan', 8000),
 (2, 'default.jpg', 'kalender 2', 'Kalender sangat berguna bagi kehidupan', 10000),
 (3, 'default.jpg', 'kalender 3', 'Kalender the best', 14000),
@@ -103,15 +103,15 @@ INSERT INTO `tbkalender` (`Id_Kalender`, `Image`, `Nama_Kalender`, `Deskripsi`, 
 --
 
 CREATE TABLE `tbkatalog` (
-  `Id_Katalog` int(11) NOT NULL,
-  `Nama` varchar(255) NOT NULL
+  `id_katalog` int(11) NOT NULL,
+  `nama` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbkatalog`
 --
 
-INSERT INTO `tbkatalog` (`Id_Katalog`, `Nama`) VALUES
+INSERT INTO `tbkatalog` (`id_katalog`, `nama`) VALUES
 (1, 'Kalender'),
 (2, 'Undangan');
 
@@ -141,18 +141,18 @@ INSERT INTO `tbrole` (`id`, `role`) VALUES
 --
 
 CREATE TABLE `tbundangan` (
-  `Id_Undangan` int(11) NOT NULL,
-  `Image` varchar(255) NOT NULL,
-  `Nama_Undangan` varchar(255) NOT NULL,
-  `Deskripsi` varchar(255) NOT NULL,
-  `Harga` int(11) NOT NULL
+  `id_undangan` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `nama_undangan` varchar(255) NOT NULL,
+  `deskripsi` varchar(255) NOT NULL,
+  `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbundangan`
 --
 
-INSERT INTO `tbundangan` (`Id_Undangan`, `Image`, `Nama_Undangan`, `Deskripsi`, `Harga`) VALUES
+INSERT INTO `tbundangan` (`id_undangan`, `image`, `nama_undangan`, `deskripsi`, `harga`) VALUES
 (1, 'undangan.jpg', 'undangan 1', 'undangan sangat dibutuhkan', 6000),
 (2, 'undangan.jpg', 'undangan 2', 'undangan number one', 8000),
 (3, 'undangan.jpg', 'undangan 3', 'undangan normal', 6000),
@@ -177,7 +177,8 @@ CREATE TABLE `user_access_menu` (
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 2, 2);
+(3, 2, 2),
+(4, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,8 @@ CREATE TABLE `user_menu` (
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Administrator'),
-(2, 'Menu');
+(2, 'Menu'),
+(3, 'Management');
 
 -- --------------------------------------------------------
 
@@ -226,8 +228,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (6, 2, 'Katalog', 'katalog', 'fas fa-fw fa-folder-open', 1),
 (7, 2, 'Data Pemesanan', 'datapemesanan', 'fas fa-fw fa-clipboard-list', 1),
 (8, 2, 'Inbox', 'inbox', 'fab fa-fw fa-whatsapp', 1),
-(9, 1, 'Management', 'management', 'fas fa-fw fa-folder', 1),
-(10, 1, 'Submenu Management', 'management/submenu', 'fas fa-fw fa-folder', 1);
+(9, 3, 'Management', 'management', 'fas fa-fw fa-folder', 1),
+(10, 3, 'Submenu Management', 'management/submenu', 'fas fa-fw fa-folder', 1);
 
 --
 -- Indexes for dumped tables
@@ -243,13 +245,13 @@ ALTER TABLE `tbadmin`
 -- Indeks untuk tabel `tbcustomer`
 --
 ALTER TABLE `tbcustomer`
-  ADD PRIMARY KEY (`Id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `tbkalender`
 --
 ALTER TABLE `tbkalender`
-  ADD PRIMARY KEY (`Id_Kalender`);
+  ADD PRIMARY KEY (`id_kalender`);
 
 --
 -- Indeks untuk tabel `tbrole`
@@ -261,7 +263,7 @@ ALTER TABLE `tbrole`
 -- Indeks untuk tabel `tbundangan`
 --
 ALTER TABLE `tbundangan`
-  ADD PRIMARY KEY (`Id_Undangan`);
+  ADD PRIMARY KEY (`id_undangan`);
 
 --
 -- Indeks untuk tabel `user_access_menu`
@@ -289,19 +291,19 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `tbadmin`
 --
 ALTER TABLE `tbadmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbcustomer`
 --
 ALTER TABLE `tbcustomer`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbkalender`
 --
 ALTER TABLE `tbkalender`
-  MODIFY `Id_Kalender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_kalender` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbrole`
@@ -313,13 +315,13 @@ ALTER TABLE `tbrole`
 -- AUTO_INCREMENT untuk tabel `tbundangan`
 --
 ALTER TABLE `tbundangan`
-  MODIFY `Id_Undangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_undangan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
@@ -331,7 +333,7 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
