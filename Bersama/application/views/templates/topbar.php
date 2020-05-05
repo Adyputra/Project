@@ -33,6 +33,10 @@
                             <i class="fas fa-fw fa-user-edit fa-sm mr-2 "></i>
                             Edit Profile
                         </a>
+                        <a class="dropdown-item" href="changepassword">
+                            <i class="fas fa-fw fas fa-key fa-sm mr-2 "></i>
+                            Change Password
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-fw fa-sign-out-alt fa-sm mr-2"></i>
