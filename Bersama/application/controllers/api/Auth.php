@@ -147,8 +147,11 @@ class Auth extends REST_Controller
         $cek = $this->db->get_where('tbcustomer', ['id' => $id])->row_array();
         if ($cek > 0) {
             $data['respon'] = [
-                'data' => $cek,
-                'status' => false,
+                'data' => [
+                    'nama' => $cek['nama'],
+                    'email' => $cek['email'],
+                ],
+                'status' => true,
                 'pesan' => "Berhasil"
             ];
                 
@@ -157,6 +160,33 @@ class Auth extends REST_Controller
                 'data' => null,
                 'status' => false,
                 'pesan' => "Gagal, Data Tidak Di Temukan"
+            ];
+        }
+
+        $this->response($data, 200);
+    }
+
+
+    public function editprofil_post($id)
+    {
+        $email = $this->input->post('email', true);
+        $nama = $this->input->post('nama', true);
+        $cek = $this->db->get_where('tbcustomer', ['email' => $email, 'id !=' => $id])->row_array();
+        if ($cek > 0) {
+                $data['respon'] = [
+                    'status' => false,
+                    'pesan' => "Email Telah Di Gunakan"
+                ];
+            
+        } else {
+            $arr = [
+                'nama' => $nama,
+                'email' => $email,
+            ];
+            $this->GeneralModel->updateData("tbcustomer", $arr, $id, 'id');
+            $data['respon'] = [
+                'status' => true,
+                'pesan' => "Berhasil Edit Profile"
             ];
         }
 
