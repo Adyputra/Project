@@ -10,7 +10,7 @@ class Pemesanan extends REST_Controller
         $data['data'] = $this->GeneralModel->getDataSingle("detailpesanan",$kode_penjualan);
         $data['respon'] = [
             'status' => true,
-            'pesan' => "Berhasil Mengirim Bukti Pembayaran. Silahkan Menunggu Konfirmasi Dari Admin"
+            'pesan' => "Berhasil"
         ];
         $this->response($data, 200);
     }
@@ -107,11 +107,13 @@ class Pemesanan extends REST_Controller
         $cek = $this->db->get_where('tbcustomer', ['id' => $id])->row_array();
         $cekdata = $this->db->get_where('tbkalender', ['id_kalender' => $kodebarang])->row_array();
         $getbank = $this->db->get('akunbank')->result_array();
-        $data['respon'] = [
-            'dataakun' => $cek,
+        $data = [
             'databank' => $getbank,
             'data' => $cekdata,
-            'status' => false,
+        ];
+        $data['data']['namaakun'] = $cek['nama'];
+        $data['respon'] = [
+            'status' => true,
             'pesan' => "Berhasil"
         ];
         $this->response($data, 200);
