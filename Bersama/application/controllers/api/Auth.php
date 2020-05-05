@@ -4,6 +4,29 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 class Auth extends REST_Controller
 {
+
+    public function login_post()
+    {
+        $email = $this->input->post('email', true);
+        $pass = $this->input->post('password', true);
+        $cek = $this->db->get_where('tbcustomer', ['email' => $email, 'password' => $pass])->row_array();
+        if ($cek > 0) {
+            
+            $data['respon'] = [
+                'status' => true,
+                'pesan' => "Login Berhasil",
+                'data' => $cek
+            ];
+        } else {
+            $data['respon'] = [
+                'status' => false,
+                'pesan' => "Login Gagal"
+            ];
+        }
+
+        $this->response($data, 200);
+    }
+
     public function reqotp_post()
     {
         $email = $this->input->post('email',true);
@@ -24,19 +47,19 @@ class Auth extends REST_Controller
                 $this->GeneralModel->insertData("otp", $arr);
                 $data['respon'] = [
                     'status' => true,
-                    'Pesan' => "Berhasil Mengirim Kode OTP Ke Email Anda"
+                    'pesan' => "Berhasil Mengirim Kode OTP Ke Email Anda"
                 ];
             // }else{
 
             //     $data['respon'] = [
             //         'status' => false,
-            //         'Pesan' => "Gagal Mengirim Kode OTP. Silahkan COba Lagi"
+            //         'pesan' => "Gagal Mengirim Kode OTP. Silahkan COba Lagi"
             //     ];
             // }
         } else {
             $data['respon'] = [
                 'status' => false,
-                'Pesan' => "Email Belum Terdaftar"
+                'pesan' => "Email Belum Terdaftar"
             ];
            
         }
@@ -55,19 +78,19 @@ class Auth extends REST_Controller
             if($cek['status'] == '1'){
             $data['respon'] = [
                 'status' => true,
-                'Pesan' => "Kode Benar"
+                'pesan' => "Kode Benar"
             ];
             }else{
 
                 $data['respon'] = [
                     'status' => false,
-                    'Pesan' => "Kode OTP Sudah Tidak Berlaku Lagi"
+                    'pesan' => "Kode OTP Sudah Tidak Berlaku Lagi"
                 ];
             }
         } else {
             $data['respon'] = [
                 'status' => false,
-                'Pesan' => "Kode OTP Salah"
+                'pesan' => "Kode OTP Salah"
             ];
         }
 
@@ -90,13 +113,13 @@ class Auth extends REST_Controller
                     $this->GeneralModel->deleteData("otp", 'email', $cek['email']);
                     $data['respon'] = [
                         'status' => true,
-                        'Pesan' => "Password Akun Anda Berhasil Di Ganti"
+                        'pesan' => "Password Akun Anda Berhasil Di Ganti"
                     ];
                 } else {
 
                     $data['respon'] = [
                         'status' => false,
-                        'Pesan' => "Konfimasi Password Salah"
+                        'pesan' => "Konfimasi Password Salah"
                     ];
                 }
                 
@@ -104,13 +127,13 @@ class Auth extends REST_Controller
 
                 $data['respon'] = [
                     'status' => false,
-                    'Pesan' => "Kode OTP Sudah Tidak Berlaku Lagi"
+                    'pesan' => "Kode OTP Sudah Tidak Berlaku Lagi"
                 ];
             }
         } else {
             $data['respon'] = [
                 'status' => false,
-                'Pesan' => "Kode OTP Salah"
+                'pesan' => "Kode OTP Salah"
             ];
         }
 
@@ -126,14 +149,14 @@ class Auth extends REST_Controller
             $data['respon'] = [
                 'data' => $cek,
                 'status' => false,
-                'Pesan' => "Berhasil"
+                'pesan' => "Berhasil"
             ];
                 
         } else {
             $data['respon'] = [
                 'data' => null,
                 'status' => false,
-                'Pesan' => "Gagal, Data Tidak Di Temukan"
+                'pesan' => "Gagal, Data Tidak Di Temukan"
             ];
         }
 

@@ -10,7 +10,7 @@ class Pemesanan extends REST_Controller
         $data['data'] = $this->GeneralModel->getDataSingle("detailpesanan",$kode_penjualan);
         $data['respon'] = [
             'status' => true,
-            'Pesan' => "Berhasil Mengirim Bukti Pembayaran. Silahkan Menunggu Konfirmasi Dari Admin"
+            'pesan' => "Berhasil Mengirim Bukti Pembayaran. Silahkan Menunggu Konfirmasi Dari Admin"
         ];
         $this->response($data, 200);
     }
@@ -33,7 +33,7 @@ class Pemesanan extends REST_Controller
         $this->GeneralModel->insertData("penjualan", $arr);
         $data['respon'] = [
             'status' => true,
-            'Pesan' => "Berhasil Menyimpan Data Pembelian Anda. Silahkan Melakukan Pembayaran",
+            'pesan' => "Berhasil Menyimpan Data Pembelian Anda. Silahkan Melakukan Pembayaran",
             "kode" => $arr['kode_penjualan']
         ];
         $this->response($data, 200);
@@ -63,7 +63,7 @@ class Pemesanan extends REST_Controller
         $this->GeneralModel->updateData("penjualan", $arr, $kode_penjualan, 'kode_penjualan');
         $data['respon'] = [
             'status' => true,
-            'Pesan' => "Berhasil Mengirim Bukti Pembayaran. Silahkan Menunggu Konfirmasi Dari Admin"
+            'pesan' => "Berhasil Mengirim Bukti Pembayaran. Silahkan Menunggu Konfirmasi Dari Admin"
         ];
         $this->response($data, 200);
     }
@@ -73,17 +73,17 @@ class Pemesanan extends REST_Controller
         if ($cekdata['status'] == "0") {
             $data['respon'] = [
                 'status' => false,
-                'Pesan' => "Pembelian Ini Telah DI Batalkan"
+                'pesan' => "Pembelian Ini Telah DI Batalkan"
             ];
         } else if ($cekdata['status'] == "3") {
             $data['respon'] = [
                 'status' => false,
-                'Pesan' => "Pembelian Ini Telah Di Proses Oleh Admin"
+                'pesan' => "Pembelian Ini Telah Di Proses Oleh Admin"
             ];
         } else if ($cekdata['status'] == "5") {
             $data['respon'] = [
                 'status' => false,
-                'Pesan' => "Pembelian Ini Telah Selesai"
+                'pesan' => "Pembelian Ini Telah Selesai"
             ];
         } else {
             $arr = [
@@ -92,7 +92,7 @@ class Pemesanan extends REST_Controller
             $this->GeneralModel->updateData("penjualan", $arr, $kode_penjualan, 'kode_penjualan');
             $data['respon'] = [
                 'status' => true,
-                'Pesan' => "Berhasil Membatalkan Pembelian"
+                'pesan' => "Berhasil Membatalkan Pembelian"
             ];
         }
         
@@ -112,7 +112,7 @@ class Pemesanan extends REST_Controller
             'databank' => $getbank,
             'data' => $cekdata,
             'status' => false,
-            'Pesan' => "Berhasil"
+            'pesan' => "Berhasil"
         ];
         $this->response($data, 200);
     }
