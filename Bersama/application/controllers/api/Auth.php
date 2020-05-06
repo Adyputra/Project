@@ -43,7 +43,6 @@ class Auth extends REST_Controller
             $this->GeneralModel->deleteData("otp",'email', $cek['email']);
             $pesan = "Hallo ". $cek ['nama']." Berikut adalah kode OTP reset akun anda <b>".$kodenum."</b>";
             $kirimemail = $this->GeneralModel->kirimemail($cek['email'],"Kode OTP Reset Password - SILaper", $pesan);
-            echo $kirimemail;
             if($kirimemail){
                 $this->GeneralModel->insertData("otp", $arr);
                 $data['respon'] = [
