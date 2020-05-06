@@ -77,20 +77,31 @@ class GeneralModel extends CI_Model
     'smtp_crypto' => 'ssl',
     'charset' => 'iso-8859-1'
     );
+    $url = 'https://optimaukm.com/api/auth/apikirimemail';
 
-
-    $this->load->library('email', $config);
-    $this->email->set_newline("\r\n");
-
-    $this->email->from("silaper@evoindo.com", $subject);
-    $this->email->to($email);
-    $this->email->cc("silaper@evoindo.com");
-
-    $this->email->subject($subject);
-    $this->email->message($pesan);
-
-      $kirim = $this->email->send();
-      return $kirim;
+    $fields = array();
+    $fields = array(
+      "pesan" => $pesan,
+      "subjek" => $subject,
+      "emailtujuan" => $email,
+      "email" => $config['smtp_user'],
+      "passmail" => $config['smtp_pass'],
+      "host" => $config['smtp_host'],
+      "port" => $config['smtp_port']
+    );
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+    $result = curl_exec($ch);
+    if ($result === FALSE) {
+      die('Curl failed: ' . curl_error($ch));
+    }
+    curl_close($ch);
+    return $result;
     }
 
 

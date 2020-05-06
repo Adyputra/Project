@@ -42,20 +42,21 @@ class Auth extends REST_Controller
             ];
             $this->GeneralModel->deleteData("otp",'email', $cek['email']);
             $pesan = "Hallo ". $cek ['nama']." Berikut adalah kode OTP reset akun anda <b>".$kodenum."</b>";
-            // $kirimemail = $this->GeneralModel->kirimemail($cek['email'],"Kode OTP Reset Password - SILaper", $pesan);
-            // if($kirimemail){
+            $kirimemail = $this->GeneralModel->kirimemail($cek['email'],"Kode OTP Reset Password - SILaper", $pesan);
+            echo $kirimemail;
+            if($kirimemail){
                 $this->GeneralModel->insertData("otp", $arr);
                 $data['respon'] = [
                     'status' => true,
                     'pesan' => "Berhasil Mengirim Kode OTP Ke Email Anda"
                 ];
-            // }else{
+            }else{
 
-            //     $data['respon'] = [
-            //         'status' => false,
-            //         'pesan' => "Gagal Mengirim Kode OTP. Silahkan COba Lagi"
-            //     ];
-            // }
+                $data['respon'] = [
+                    'status' => false,
+                    'pesan' => "Gagal Mengirim Kode OTP. Silahkan COba Lagi"
+                ];
+            }
         } else {
             $data['respon'] = [
                 'status' => false,
@@ -113,7 +114,7 @@ class Auth extends REST_Controller
                     $this->GeneralModel->deleteData("otp", 'email', $cek['email']);
                     $data['respon'] = [
                         'status' => true,
-                        'pesan' => "Password Akun Anda Berhasil Di Ganti"
+                        'pesan' => "Password Akun Anda Berhasil Di Ganti. Silahkan Login Ke Akun Anda"
                     ];
                 } else {
 
