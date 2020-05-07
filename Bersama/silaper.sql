@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2020 at 06:10 PM
--- Server version: 10.1.35-MariaDB
--- PHP Version: 7.2.9
+-- Waktu pembuatan: 07 Bulan Mei 2020 pada 17.23
+-- Versi server: 10.1.38-MariaDB
+-- Versi PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `akunbank`
+-- Struktur dari tabel `akunbank`
 --
 
 CREATE TABLE `akunbank` (
@@ -36,7 +36,7 @@ CREATE TABLE `akunbank` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `akunbank`
+-- Dumping data untuk tabel `akunbank`
 --
 
 INSERT INTO `akunbank` (`kode_akunbank`, `nama_rek`, `nama_bank`, `no_rek`) VALUES
@@ -46,7 +46,7 @@ INSERT INTO `akunbank` (`kode_akunbank`, `nama_rek`, `nama_bank`, `no_rek`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `otp`
+-- Struktur dari tabel `otp`
 --
 
 CREATE TABLE `otp` (
@@ -61,7 +61,7 @@ CREATE TABLE `otp` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `penjualan`
+-- Struktur dari tabel `penjualan`
 --
 
 CREATE TABLE `penjualan` (
@@ -81,7 +81,7 @@ CREATE TABLE `penjualan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `penjualan`
+-- Dumping data untuk tabel `penjualan`
 --
 
 INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_akunbank`, `qty`, `last_price`, `unik`, `status`, `alamat_kirim`, `catatan_member`, `bukti_tf`, `catatan_status`, `create_at`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_a
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbadmin`
+-- Struktur dari tabel `tbadmin`
 --
 
 CREATE TABLE `tbadmin` (
@@ -105,7 +105,7 @@ CREATE TABLE `tbadmin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbadmin`
+-- Dumping data untuk tabel `tbadmin`
 --
 
 INSERT INTO `tbadmin` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
@@ -117,7 +117,7 @@ INSERT INTO `tbadmin` (`id`, `name`, `email`, `image`, `password`, `role_id`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbcustomer`
+-- Struktur dari tabel `tbcustomer`
 --
 
 CREATE TABLE `tbcustomer` (
@@ -129,7 +129,7 @@ CREATE TABLE `tbcustomer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbcustomer`
+-- Dumping data untuk tabel `tbcustomer`
 --
 
 INSERT INTO `tbcustomer` (`id`, `nama`, `email`, `password`, `daftar_via`) VALUES
@@ -141,7 +141,7 @@ INSERT INTO `tbcustomer` (`id`, `nama`, `email`, `password`, `daftar_via`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbkalender`
+-- Struktur dari tabel `tbkalender`
 --
 
 CREATE TABLE `tbkalender` (
@@ -153,7 +153,7 @@ CREATE TABLE `tbkalender` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbkalender`
+-- Dumping data untuk tabel `tbkalender`
 --
 
 INSERT INTO `tbkalender` (`id_kalender`, `image`, `nama_kalender`, `deskripsi`, `harga`) VALUES
@@ -165,26 +165,28 @@ INSERT INTO `tbkalender` (`id_kalender`, `image`, `nama_kalender`, `deskripsi`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbkatalog`
+-- Struktur dari tabel `tbkatalog`
 --
 
 CREATE TABLE `tbkatalog` (
-  `id_katalog` int(11) NOT NULL,
+  `Id_Katalog` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbkatalog`
+-- Dumping data untuk tabel `tbkatalog`
 --
 
-INSERT INTO `tbkatalog` (`id_katalog`, `nama`) VALUES
-(1, 'Kalender'),
-(2, 'Undangan');
+INSERT INTO `tbkatalog` (`Id_Katalog`, `nama`) VALUES
+(0, 'Kalender'),
+(0, 'Undangan'),
+(0, 'test'),
+(0, 'coba');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbrole`
+-- Struktur dari tabel `tbrole`
 --
 
 CREATE TABLE `tbrole` (
@@ -193,7 +195,7 @@ CREATE TABLE `tbrole` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbrole`
+-- Dumping data untuk tabel `tbrole`
 --
 
 INSERT INTO `tbrole` (`id`, `role`) VALUES
@@ -203,7 +205,7 @@ INSERT INTO `tbrole` (`id`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbundangan`
+-- Struktur dari tabel `tbundangan`
 --
 
 CREATE TABLE `tbundangan` (
@@ -215,7 +217,7 @@ CREATE TABLE `tbundangan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tbundangan`
+-- Dumping data untuk tabel `tbundangan`
 --
 
 INSERT INTO `tbundangan` (`id_undangan`, `image`, `nama_undangan`, `deskripsi`, `harga`) VALUES
@@ -227,7 +229,7 @@ INSERT INTO `tbundangan` (`id_undangan`, `image`, `nama_undangan`, `deskripsi`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_access_menu`
+-- Struktur dari tabel `user_access_menu`
 --
 
 CREATE TABLE `user_access_menu` (
@@ -237,7 +239,7 @@ CREATE TABLE `user_access_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_access_menu`
+-- Dumping data untuk tabel `user_access_menu`
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
@@ -249,7 +251,7 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_menu`
+-- Struktur dari tabel `user_menu`
 --
 
 CREATE TABLE `user_menu` (
@@ -258,7 +260,7 @@ CREATE TABLE `user_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_menu`
+-- Dumping data untuk tabel `user_menu`
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
@@ -269,7 +271,7 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_sub_menu`
+-- Struktur dari tabel `user_sub_menu`
 --
 
 CREATE TABLE `user_sub_menu` (
@@ -282,7 +284,7 @@ CREATE TABLE `user_sub_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_sub_menu`
+-- Dumping data untuk tabel `user_sub_menu`
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
@@ -303,119 +305,119 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 --
 
 --
--- Indexes for table `akunbank`
+-- Indeks untuk tabel `akunbank`
 --
 ALTER TABLE `akunbank`
   ADD PRIMARY KEY (`kode_akunbank`);
 
 --
--- Indexes for table `otp`
+-- Indeks untuk tabel `otp`
 --
 ALTER TABLE `otp`
   ADD PRIMARY KEY (`kode_otp`);
 
 --
--- Indexes for table `penjualan`
+-- Indeks untuk tabel `penjualan`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`kode_penjualan`);
 
 --
--- Indexes for table `tbadmin`
+-- Indeks untuk tabel `tbadmin`
 --
 ALTER TABLE `tbadmin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbcustomer`
+-- Indeks untuk tabel `tbcustomer`
 --
 ALTER TABLE `tbcustomer`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbkalender`
+-- Indeks untuk tabel `tbkalender`
 --
 ALTER TABLE `tbkalender`
   ADD PRIMARY KEY (`id_kalender`);
 
 --
--- Indexes for table `tbrole`
+-- Indeks untuk tabel `tbrole`
 --
 ALTER TABLE `tbrole`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `tbundangan`
+-- Indeks untuk tabel `tbundangan`
 --
 ALTER TABLE `tbundangan`
   ADD PRIMARY KEY (`id_undangan`);
 
 --
--- Indexes for table `user_access_menu`
+-- Indeks untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_menu`
+-- Indeks untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user_sub_menu`
+-- Indeks untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `tbadmin`
+-- AUTO_INCREMENT untuk tabel `tbadmin`
 --
 ALTER TABLE `tbadmin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbcustomer`
+-- AUTO_INCREMENT untuk tabel `tbcustomer`
 --
 ALTER TABLE `tbcustomer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbkalender`
+-- AUTO_INCREMENT untuk tabel `tbkalender`
 --
 ALTER TABLE `tbkalender`
   MODIFY `id_kalender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbrole`
+-- AUTO_INCREMENT untuk tabel `tbrole`
 --
 ALTER TABLE `tbrole`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbundangan`
+-- AUTO_INCREMENT untuk tabel `tbundangan`
 --
 ALTER TABLE `tbundangan`
   MODIFY `id_undangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user_access_menu`
+-- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user_menu`
+-- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `user_sub_menu`
+-- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
