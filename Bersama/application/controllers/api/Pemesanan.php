@@ -54,6 +54,13 @@ class Pemesanan extends REST_Controller
                 $gbr = $this->upload->data();
 
                 $gambar = "assets/upload/bukti/" . $gbr['file_name'];
+                $configg['image_library'] = 'gd2';
+                $configg['source_image'] = "/".$gambar;
+                $configg['overwrite'] = TRUE;
+                $configg['quality']         = 50;
+                $this->load->library('image_lib', $configg);
+
+                $this->image_lib->resize();
             }
         }
         $arr = [
