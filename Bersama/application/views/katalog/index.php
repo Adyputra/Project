@@ -28,7 +28,7 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $n['nama']; ?></td>
                             <td>
-                                <a href="" class="badge badge-primary">view</a>
+                                <a href="" class="badge badge-info">view</a>
                                 <a href="" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
