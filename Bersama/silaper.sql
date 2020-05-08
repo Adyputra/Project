@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Bulan Mei 2020 pada 17.23
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Waktu pembuatan: 08 Bulan Mei 2020 pada 16.22
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -85,6 +85,7 @@ CREATE TABLE `penjualan` (
 --
 
 INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_akunbank`, `qty`, `last_price`, `unik`, `status`, `alamat_kirim`, `catatan_member`, `bukti_tf`, `catatan_status`, `create_at`) VALUES
+('D7jOL8H8cawBL488', 2, 1, 'askdnsadajk12189', 2, 10000, 516, 2, 'Jl. Merak', 'Tidak ada', 'assets/upload/bukti/c4bdeb52e1980b81064f4e8d1b5ac67a.png', '', '2020-05-08 14:56:26'),
 ('YPRTH3aT8pvqn9S6', 2, 0, 'askdnsadajk12189', 2, 10000, 654, 0, 'jalan pelita', '', 'assets/upload/bukti/2605800a6a37afe589196b70a67d56a8.jpeg', '', '2020-05-05 17:55:09');
 
 -- --------------------------------------------------------
@@ -169,19 +170,17 @@ INSERT INTO `tbkalender` (`id_kalender`, `image`, `nama_kalender`, `deskripsi`, 
 --
 
 CREATE TABLE `tbkatalog` (
-  `Id_Katalog` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL
+  `id_katalog` int(11) NOT NULL,
+  `nama` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbkatalog`
 --
 
-INSERT INTO `tbkatalog` (`Id_Katalog`, `nama`) VALUES
-(0, 'Kalender'),
-(0, 'Undangan'),
-(0, 'test'),
-(0, 'coba');
+INSERT INTO `tbkatalog` (`id_katalog`, `nama`) VALUES
+(1, 'Kalender'),
+(2, 'Undangan');
 
 -- --------------------------------------------------------
 
@@ -341,6 +340,12 @@ ALTER TABLE `tbkalender`
   ADD PRIMARY KEY (`id_kalender`);
 
 --
+-- Indeks untuk tabel `tbkatalog`
+--
+ALTER TABLE `tbkatalog`
+  ADD PRIMARY KEY (`id_katalog`);
+
+--
 -- Indeks untuk tabel `tbrole`
 --
 ALTER TABLE `tbrole`
@@ -393,6 +398,12 @@ ALTER TABLE `tbkalender`
   MODIFY `id_kalender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT untuk tabel `tbkatalog`
+--
+ALTER TABLE `tbkatalog`
+  MODIFY `id_katalog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT untuk tabel `tbrole`
 --
 ALTER TABLE `tbrole`
@@ -414,7 +425,7 @@ ALTER TABLE `user_access_menu`
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
