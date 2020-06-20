@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?> </h1>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
 
             <?= form_error('nama', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
@@ -28,8 +28,7 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $n['nama']; ?></td>
                             <td>
-                                <a href="" class="badge badge-primary">view</a>
-                                <a href="" class="badge badge-danger">delete</a>
+                                <a href="" class="badge badge-info">view</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

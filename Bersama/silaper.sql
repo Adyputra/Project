@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Bulan Mei 2020 pada 17.23
--- Versi server: 10.1.38-MariaDB
--- Versi PHP: 7.3.2
+-- Waktu pembuatan: 20 Jun 2020 pada 07.58
+-- Versi server: 10.1.37-MariaDB
+-- Versi PHP: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -74,6 +74,7 @@ CREATE TABLE `penjualan` (
   `unik` int(3) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '0 = batal 1 = wait bayar 2=wait acc admin 3=proses 4 = tolak 5 = selesai',
   `alamat_kirim` varchar(125) NOT NULL,
+  `no_hp` int(13) NOT NULL,
   `catatan_member` varchar(100) NOT NULL,
   `bukti_tf` varchar(75) NOT NULL,
   `catatan_status` varchar(100) NOT NULL,
@@ -84,8 +85,10 @@ CREATE TABLE `penjualan` (
 -- Dumping data untuk tabel `penjualan`
 --
 
-INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_akunbank`, `qty`, `last_price`, `unik`, `status`, `alamat_kirim`, `catatan_member`, `bukti_tf`, `catatan_status`, `create_at`) VALUES
-('YPRTH3aT8pvqn9S6', 2, 0, 'askdnsadajk12189', 2, 10000, 654, 0, 'jalan pelita', '', 'assets/upload/bukti/2605800a6a37afe589196b70a67d56a8.jpeg', '', '2020-05-05 17:55:09');
+INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_akunbank`, `qty`, `last_price`, `unik`, `status`, `alamat_kirim`, `no_hp`, `catatan_member`, `bukti_tf`, `catatan_status`, `create_at`) VALUES
+('fIMckubvvss20eLc', 2, 1, 'askdnsadajk12189', 1, 10000, 318, 1, 'Jl.  Merak', 0, '', '', '', '2020-05-10 08:17:47'),
+('jCT5PH8dgBTRlSn9', 2, 1, 'jhdkashduy128621', 2, 10000, 133, 1, 'Jl. Merak', 0, 'Tidak Ada', '', '', '2020-05-10 08:16:11'),
+('xtuPxklXNp7jQWoj', 2, 1, 'askdnsadajk12189', 1, 10000, 849, 1, 'Jl. Merak', 0, 'Tidak Ada', '', '', '2020-05-10 08:21:54');
 
 -- --------------------------------------------------------
 
@@ -109,10 +112,8 @@ CREATE TABLE `tbadmin` (
 --
 
 INSERT INTO `tbadmin` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(1, 'Coba', 'coba@gmail.com', 'default.jpg', '$2y$10$l02Uf7ujrhreev/C.MDd2.4zovriQJjCWOo8O6D42cJbHXGVWH/gq', 1, 1, 1586351026),
-(2, 'Akun 1', 'coba1@gmail.com', 'default.jpg', '$2y$10$dx/AIhaabEbdxwsA5TjuAeU0IUNxFne8AWr8d6iW0csdueiLpdF8e', 2, 1, 1587441817),
-(3, 'Fortuna', 'fortuna@gmail.com', 'default.jpg', '$2y$10$f9ZbVyaF.FTk4QyLSlKrnueVzuqT2Uf8rnx0bFLWFknUbShc4TsO.', 2, 1, 1587460957),
-(4, 'Huhuhu', 'huhu@gmail.com', 'default.jpg', '$2y$10$8r.jGvFCL7SmxS8Q.phOkOx77aP.gTHSwMJ6WJ/wAr0lyKDHAc.dq', 2, 1, 1587461124);
+(1, 'Admin Silaper', 'kelompok6@gmail.com', 'default.jpg', '$2y$10$T9h2oJXFeX4xPbuAcHGxkulO98qjoZ5n/QoOiGjQaJKzt3cG3Zrx2', 1, 1, 1592559949),
+(2, 'Karyawan', 'karyawan1@gmail.com', 'default.jpg', '$2y$10$skvWNDvJ.YBJhgCVBlxnOOfd19CV/pT8TWtxQSXotCaVZASiRmxmu', 2, 1, 1592559983);
 
 -- --------------------------------------------------------
 
@@ -133,7 +134,7 @@ CREATE TABLE `tbcustomer` (
 --
 
 INSERT INTO `tbcustomer` (`id`, `nama`, `email`, `password`, `daftar_via`) VALUES
-(1, 'Bro', 'bro@gmail.com', '123', 1),
+(1, 'Broo', 'bro@gmail.com', '123', 1),
 (2, 'Yoks', 'yoks@gmail.com', '00000', 1),
 (3, 'Zur', 'zur@gmail.com', '121212', 1),
 (4, 'Rahmad', 'rahmad@gmail.com', '232323', 1);
@@ -169,19 +170,17 @@ INSERT INTO `tbkalender` (`id_kalender`, `image`, `nama_kalender`, `deskripsi`, 
 --
 
 CREATE TABLE `tbkatalog` (
-  `Id_Katalog` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL
+  `id_katalog` int(11) NOT NULL,
+  `nama` varchar(128) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `tbkatalog`
 --
 
-INSERT INTO `tbkatalog` (`Id_Katalog`, `nama`) VALUES
-(0, 'Kalender'),
-(0, 'Undangan'),
-(0, 'test'),
-(0, 'coba');
+INSERT INTO `tbkatalog` (`id_katalog`, `nama`) VALUES
+(1, 'Kalender'),
+(2, 'Undangan');
 
 -- --------------------------------------------------------
 
@@ -243,10 +242,10 @@ CREATE TABLE `user_access_menu` (
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
-(1, 1, 1),
 (2, 1, 2),
 (3, 2, 2),
-(4, 1, 3);
+(4, 1, 3),
+(8, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -341,6 +340,12 @@ ALTER TABLE `tbkalender`
   ADD PRIMARY KEY (`id_kalender`);
 
 --
+-- Indeks untuk tabel `tbkatalog`
+--
+ALTER TABLE `tbkatalog`
+  ADD PRIMARY KEY (`id_katalog`);
+
+--
 -- Indeks untuk tabel `tbrole`
 --
 ALTER TABLE `tbrole`
@@ -378,7 +383,7 @@ ALTER TABLE `user_sub_menu`
 -- AUTO_INCREMENT untuk tabel `tbadmin`
 --
 ALTER TABLE `tbadmin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbcustomer`
@@ -391,6 +396,12 @@ ALTER TABLE `tbcustomer`
 --
 ALTER TABLE `tbkalender`
   MODIFY `id_kalender` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbkatalog`
+--
+ALTER TABLE `tbkatalog`
+  MODIFY `id_katalog` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbrole`
@@ -408,13 +419,13 @@ ALTER TABLE `tbundangan`
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
