@@ -4,6 +4,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Admin extends CI_Controller
 {
 
+    function __construct()
+    {
+        parent::__construct();
+        if (!$this->session->has_userdata('role_id') || $this->session->userdata('role_id')  != '1') {
+            redirect('auth/blocked');
+        }
+    }
     public function index()
     {
         $data['title'] = 'Dashboard';
