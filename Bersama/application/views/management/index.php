@@ -5,13 +5,11 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title; ?> </h1>
 
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
 
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('message'); ?>
-
-            <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
 
             <table class="table table-hover">
                 <thead>
@@ -29,7 +27,6 @@
                             <td><?= $m['menu']; ?></td>
                             <td>
                                 <a href="" class="badge badge-warning">edit</a>
-                                <a href="" class="badge badge-danger">delete</a>
                             </td>
                         </tr>
                         <?php $i++; ?>
