@@ -26,7 +26,7 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $m['menu']; ?></td>
                             <td>
-                                <a href="" class="badge badge-warning">edit</a>
+                                <a href="<?= base_url('management/edit/'.$m['id']) ?>" class="badge badge-warning">edit</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

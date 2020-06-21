@@ -57,6 +57,8 @@
     $('.form-check-input').on('click', function() {
         const menuId = $(this).data('menu');
         const roleId = $(this).data('role');
+        console.log(menuId);
+        
 
         $.ajax({
             url: "<?= base_url('admin/changeaccess'); ?>",

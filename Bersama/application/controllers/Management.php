@@ -30,6 +30,32 @@ class Management extends CI_Controller
             redirect('management/index');
         }
     }
+    public function edit($id)
+    {
+        $data['title'] = 'Edit Management';
+        $data['admin'] = $this->db->get_where('tbadmin', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $data['menu'] = $this->db->get_where('user_menu',['id' => $id])->row_array();
+
+        $this->form_validation->set_rules('menu', 'Menu', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('management/editmanagement', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'menu' => $this->input->post('menu')
+            ];
+            $this->db->update('user_menu', $data,['id' => $id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" 
+            role="alert">Menu Berhasil Di Edit! </div>');
+            redirect('management/index');
+        }
+    }
 
     public function submenu()
     {
