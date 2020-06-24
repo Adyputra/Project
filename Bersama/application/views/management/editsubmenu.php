@@ -7,15 +7,15 @@
     <div class="row">
         <div class="col-lg-5">
 
-            <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
+            <?= form_error('title', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
             <?= $this->session->flashdata('message'); ?>
 
-            <form action="<?= base_url('management/edit/' . $menu['id']); ?>" method="post">
+            <form action="<?= base_url('management/editsubmenu/' . $title['id']); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Management</label>
-                        <input type="text" class="form-control" id="menu" name="menu" value="<?= $menu['menu'] ?>" placeholder="Management Name">
+                        <label>Nama Submenu Management</label>
+                        <input type="text" class="form-control" id="title" name="title" value="<?= $title['title'] ?>" placeholder="Management Name">
                     </div>
                 </div>
                 <div class="modal-footer">

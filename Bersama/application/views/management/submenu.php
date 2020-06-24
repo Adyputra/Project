@@ -17,7 +17,7 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Title</th>
+                            <th scope="col">title</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -28,7 +28,7 @@
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $sm['title']; ?></td>
                                 <td>
-                                    <a href="" class="badge badge-warning">edit</a>
+                                    <a href="<?= base_url('management/editsubmenu/' . $sm['id']) ?>" class="badge badge-warning">edit</a>
                                 </td>
                             </tr>
                             <?php $i++; ?>

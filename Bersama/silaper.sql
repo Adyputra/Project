@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Jun 2020 pada 07.58
+-- Waktu pembuatan: 24 Jun 2020 pada 11.11
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -40,8 +40,8 @@ CREATE TABLE `akunbank` (
 --
 
 INSERT INTO `akunbank` (`kode_akunbank`, `nama_rek`, `nama_bank`, `no_rek`) VALUES
-('askdnsadajk12189', 'Admin 2', 'BRI', '2i109381920'),
-('jhdkashduy128621', 'Admin 1', 'BCA', '21389271389');
+('askdnsadajk12189', 'Admin', 'BRI', '2109381920'),
+('jhdkashduy128621', 'Admin', 'BNI', '21389271389');
 
 -- --------------------------------------------------------
 
@@ -81,14 +81,20 @@ CREATE TABLE `penjualan` (
   `create_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `penjualan`
+-- Struktur dari tabel `reset_akun`
 --
 
-INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_akunbank`, `qty`, `last_price`, `unik`, `status`, `alamat_kirim`, `no_hp`, `catatan_member`, `bukti_tf`, `catatan_status`, `create_at`) VALUES
-('fIMckubvvss20eLc', 2, 1, 'askdnsadajk12189', 1, 10000, 318, 1, 'Jl.  Merak', 0, '', '', '', '2020-05-10 08:17:47'),
-('jCT5PH8dgBTRlSn9', 2, 1, 'jhdkashduy128621', 2, 10000, 133, 1, 'Jl. Merak', 0, 'Tidak Ada', '', '', '2020-05-10 08:16:11'),
-('xtuPxklXNp7jQWoj', 2, 1, 'askdnsadajk12189', 1, 10000, 849, 1, 'Jl. Merak', 0, 'Tidak Ada', '', '', '2020-05-10 08:21:54');
+CREATE TABLE `reset_akun` (
+  `kode_reset` varchar(128) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `tipe_reset` int(1) NOT NULL COMMENT '1 = aktivasi akun 2 = reset pass',
+  `keterangan` varchar(50) NOT NULL,
+  `status` int(1) NOT NULL DEFAULT '1' COMMENT '0 = tidak aktif 1 = aktif',
+  `create_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -242,10 +248,10 @@ CREATE TABLE `user_access_menu` (
 --
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
+(1, 1, 1),
 (2, 1, 2),
-(3, 2, 2),
-(4, 1, 3),
-(8, 1, 1);
+(3, 1, 3),
+(4, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -320,6 +326,12 @@ ALTER TABLE `otp`
 --
 ALTER TABLE `penjualan`
   ADD PRIMARY KEY (`kode_penjualan`);
+
+--
+-- Indeks untuk tabel `reset_akun`
+--
+ALTER TABLE `reset_akun`
+  ADD PRIMARY KEY (`kode_reset`);
 
 --
 -- Indeks untuk tabel `tbadmin`
@@ -419,7 +431,7 @@ ALTER TABLE `tbundangan`
 -- AUTO_INCREMENT untuk tabel `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_menu`
