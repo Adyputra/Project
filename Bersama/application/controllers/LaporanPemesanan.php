@@ -29,6 +29,7 @@ class LaporanPemesanan extends CI_Controller
         $data = array(
             "penjualan"=>$this->data->getdatapenjualan()
         );
+        $data['title'] = 'Laporan Pemesanan';
         $this->load->view('templates/header', $data);
         //$this->load->view('templates/sidebar', $data);
         //$this->load->view('templates/topbar', $data);
