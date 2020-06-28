@@ -7,12 +7,21 @@ class Admin extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        $this->load->model('data');
         if (!$this->session->has_userdata('role_id') || $this->session->userdata('role_id')  != '1') {
             redirect('auth/blocked');
         }
     }
     public function index()
     {
+        $kd=$this->data;
+        $id=$this->data;
+        $data['totalusr'] = $id->getjumlahusr();
+        $data['totalorder'] = $kd->getjumlahorder();
+        $data['totalorderwait'] = $kd->getjumlahorderwait();
+        $data['totalpenjualan'] = $kd->getjumlahpenjualan();
+        $data['totalkalender'] = $id->getjumlahkalender();
+        $data['totalundangan'] = $id->getjumlahundangan();
         $data['title'] = 'Dashboard';
         $data['admin'] = $this->db->get_where('tbadmin', ['email' =>
         $this->session->userdata('email')])->row_array();

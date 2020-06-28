@@ -178,17 +178,16 @@ class Auth extends CI_Controller
 
         // jika usernya ada
         if ($cektoken) {
-                $this->db->update('reset_akun', ['status' => 0], ['kode_reset' => $token]);
-                  $data = [
-                    'is_active' => 1,
-                    ];
+            $this->db->update('reset_akun', ['status' => 0], ['kode_reset' => $token]);
+            $data = [
+                'is_active' => 1,
+            ];
 
-                    $this->db->update('tbadmin', $data,['email' => $cektoken['email']]);
-                    $this->session->set_flashdata('message', '<div class="alert
+            $this->db->update('tbadmin', $data, ['email' => $cektoken['email']]);
+            $this->session->set_flashdata('message', '<div class="alert
             alert-success" role="alert">Berhasil memverifikasi akun anda. Silahkan Login ke akun anda.</div>');
 
-                    redirect('auth');
-            
+            redirect('auth');
         } else {
             $this->session->set_flashdata('message', '<div class="alert
             alert-danger" role="alert">Kode sudah tidak valid atau sudah digunakan. </div>');
