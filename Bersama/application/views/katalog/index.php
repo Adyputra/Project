@@ -28,7 +28,7 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $n['nama']; ?></td>
                             <td>
-                                <a href="" class="badge badge-info">view</a>
+                                <a href="<?php echo base_url('katalog/'.$n['nama'].'') ?>" class="badge badge-info">view</a>
                             </td>
                         </tr>
                         <?php $i++; ?>

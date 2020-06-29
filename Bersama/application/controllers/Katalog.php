@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Katalog extends CI_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('data');
+        
+    }
     public function index()
     {
         $data['title'] = 'Katalog';
@@ -26,4 +32,28 @@ class Katalog extends CI_Controller
             redirect('katalog');
         }
     }
-}
+    public function kalender()
+    {
+        $data = array(
+            "tbkalender"=>$this->data->getkalender()
+        );
+        $data['title'] = 'katalog';
+        $this->load->view('templates/header', $data);
+        //$this->load->view('templates/sidebar', $data);
+        //$this->load->view('templates/topbar', $data);
+        $this->load->view('katalog/kalender', $data);
+    }
+    public function undangan()
+    {
+        $data = array(
+            "tbundangan"=>$this->data->getundangan()
+        );
+        $data['title'] = 'katalog';
+        $this->load->view('templates/header', $data);
+        //$this->load->view('templates/sidebar', $data);
+        //$this->load->view('templates/topbar', $data);
+        $this->load->view('katalog/undangan', $data);
+    }
+
+    }
+

@@ -54,4 +54,14 @@ class data extends CI_Model
         $this->load->database();
         return $this->db->get("penjualan")->result();
     }
+    public function getkalender()
+    {
+        $this->load->database();
+        return $this->db->get("tbkalender")->result();
+    }
+    public function getundangan()
+    {
+        $this->load->database();
+        return $this->db->get("tbundangan")->result();
+    }
 }
