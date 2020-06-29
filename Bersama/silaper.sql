@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 24 Jun 2020 pada 11.11
+-- Waktu pembuatan: 29 Jun 2020 pada 04.18
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -143,7 +143,8 @@ INSERT INTO `tbcustomer` (`id`, `nama`, `email`, `password`, `daftar_via`) VALUE
 (1, 'Broo', 'bro@gmail.com', '123', 1),
 (2, 'Yoks', 'yoks@gmail.com', '00000', 1),
 (3, 'Zur', 'zur@gmail.com', '121212', 1),
-(4, 'Rahmad', 'rahmad@gmail.com', '232323', 1);
+(4, 'Rahmad', 'rahmad@gmail.com', '232323', 1),
+(5, 'Meilinnia Fortuna Astri', 'meilinniafa@gmail.com', '117247819988929534529', 2);
 
 -- --------------------------------------------------------
 
@@ -297,13 +298,11 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (2, 1, 'Laporan Pemesanan', 'laporanpemesanan', 'far fa-fw fas fa-file', 1),
 (3, 2, 'My Profile', 'profile', 'far fa-fw fa-user', 1),
 (4, 2, 'Profile Percetakan', 'profilepercetakan', 'fas fa-fw fa-home', 1),
-(5, 2, 'Calendar', 'calendar', 'fas fa-fw fa-calendar-alt', 1),
-(6, 2, 'Katalog', 'katalog', 'fas fa-fw fa-folder-open', 1),
-(7, 2, 'Data Pemesanan', 'datapemesanan', 'fas fa-fw fa-clipboard-list', 1),
-(8, 2, 'Inbox', 'inbox', 'fab fa-fw fa-whatsapp', 1),
-(9, 3, 'Management', 'management', 'fas fa-fw fa-folder', 1),
-(10, 3, 'Submenu Management', 'management/submenu', 'fas fa-fw fa-folder', 1),
-(11, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1);
+(5, 2, 'Katalog', 'katalog', 'fas fa-fw fa-folder-open', 1),
+(6, 2, 'Data Pemesanan', 'datapemesanan', 'fas fa-fw fa-clipboard-list', 1),
+(7, 3, 'Management', 'management', 'fas fa-fw fa-folder', 1),
+(8, 3, 'Submenu Management', 'management/submenu', 'fas fa-fw fa-folder', 1),
+(9, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1);
 
 --
 -- Indexes for dumped tables
@@ -401,7 +400,7 @@ ALTER TABLE `tbadmin`
 -- AUTO_INCREMENT untuk tabel `tbcustomer`
 --
 ALTER TABLE `tbcustomer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbkalender`
