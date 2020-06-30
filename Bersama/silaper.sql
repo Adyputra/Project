@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jun 2020 pada 04.18
+-- Waktu pembuatan: 30 Jun 2020 pada 18.01
 -- Versi server: 10.1.37-MariaDB
 -- Versi PHP: 7.3.1
 
@@ -74,12 +74,22 @@ CREATE TABLE `penjualan` (
   `unik` int(3) NOT NULL,
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '0 = batal 1 = wait bayar 2=wait acc admin 3=proses 4 = tolak 5 = selesai',
   `alamat_kirim` varchar(125) NOT NULL,
-  `no_hp` int(13) NOT NULL,
+  `no_hp` varchar(13) NOT NULL,
   `catatan_member` varchar(100) NOT NULL,
   `bukti_tf` varchar(75) NOT NULL,
   `catatan_status` varchar(100) NOT NULL,
   `create_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `penjualan`
+--
+
+INSERT INTO `penjualan` (`kode_penjualan`, `id_kalender`, `id_customer`, `kode_akunbank`, `qty`, `last_price`, `unik`, `status`, `alamat_kirim`, `no_hp`, `catatan_member`, `bukti_tf`, `catatan_status`, `create_at`) VALUES
+('CJRILBiIw2puRaHD', 2, 1, 'jhdkashduy128621', 3, 10000, 286, 1, 'bj', '08966', 'nn', '', '', '2020-06-29 21:09:49'),
+('Jx2VNMFLmXViZWav', 2, 1, 'jhdkashduy128621', 7, 10000, 923, 1, 'ggg', '86666', 'tyyy\n', '', '', '2020-06-29 21:11:02'),
+('oGfBA9Hc6wmsZImj', 2, 1, 'askdnsadajk12189', 6, 10000, 39, 1, 'bws', '08969666', '', '', '', '2020-06-29 21:08:07'),
+('yc1dkDSk5ryimwMP', 2, 1, 'askdnsadajk12189', 5, 10000, 106, 1, 'bwd', '08966553', 'ghh', '', '', '2020-06-29 21:46:54');
 
 -- --------------------------------------------------------
 
@@ -302,7 +312,8 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (6, 2, 'Data Pemesanan', 'datapemesanan', 'fas fa-fw fa-clipboard-list', 1),
 (7, 3, 'Management', 'management', 'fas fa-fw fa-folder', 1),
 (8, 3, 'Submenu Management', 'management/submenu', 'fas fa-fw fa-folder', 1),
-(9, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1);
+(9, 1, 'Role', 'admin/role', 'fas fa-fw fa-user-tie', 1),
+(12, 1, 'User Karyawan', 'userkaryawan', 'fas fa-fw fa-users', 1);
 
 --
 -- Indexes for dumped tables
@@ -442,7 +453,7 @@ ALTER TABLE `user_menu`
 -- AUTO_INCREMENT untuk tabel `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
