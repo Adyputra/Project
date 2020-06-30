@@ -93,4 +93,30 @@ class Management extends CI_Controller
             redirect('management/submenu');
         }
     }
+    public function editsubmenu($id)
+    {
+        $data['title'] = 'Edit Submenu Management';
+        $data['admin'] = $this->db->get_where('tbadmin', ['email' =>
+        $this->session->userdata('email')])->row_array();
+
+        $data['menu'] = $this->db->get_where('user_sub_menu', ['id' => $id])->row_array();
+
+        $this->form_validation->set_rules('title', 'Title', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('management/editsubmanagement', $data);
+            $this->load->view('templates/footer');
+        } else {
+            $data = [
+                'title' => $this->input->post('title')
+            ];
+            $this->db->update('user_sub_menu', $data, ['id' => $id]);
+            $this->session->set_flashdata('message', '<div class="alert alert-success" 
+            role="alert">Submenu Management Berhasil Di Edit! </div>');
+            redirect('management/submenu');
+        }
+    }
 }

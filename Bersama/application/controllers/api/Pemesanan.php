@@ -26,6 +26,7 @@ class Pemesanan extends REST_Controller
             'qty' => $this->input->post('qty', true),
             'last_price' => $getkalender['harga'],
             'alamat_kirim' => $this->input->post('alamat_kirim', true),
+            'no_hp' => $this->input->post('no_hp', true),
             'catatan_member' => $this->input->post('catatan_member', true),
             'unik' => $kodenum,
             'create_at' => date('Y-m-d H:i:s')

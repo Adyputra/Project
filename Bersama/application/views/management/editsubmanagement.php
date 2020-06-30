@@ -11,12 +11,12 @@
 
             <?= $this->session->flashdata('message'); ?>
 
-            <form action="<?= base_url('management/edit/' . $menu['id']); ?>" method="post">
+            <form action="<?= base_url('management/editsubmenu/' . $menu['id']); ?>" method="post">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label>Nama Management</label>
-                        <input type="text" class="form-control" id="menu" name="menu" value="<?= $menu['menu'] ?>" placeholder="Management Name">
-                        <?= form_error('menu', '<small class="text-danger pl-3">', '</small>'); ?>
+                        <label>Title Management</label>
+                        <input type="text" class="form-control" id="title" name="title" value="<?= $menu['title'] ?>" placeholder="Title Submenu Management">
+                        <?= form_error('title', '<small class="text-danger pl-3">', '</small>'); ?>
 
                     </div>
                 </div>
