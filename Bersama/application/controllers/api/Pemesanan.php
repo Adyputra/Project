@@ -16,15 +16,15 @@ class Pemesanan extends REST_Controller
     }
     public function buatpesanan_post()
     {
-        $getkalender = $this->db->get_where('tbkalender', ['id_kalender' => $this->input->post('id_kalender', true)])->row_array();
+        $getproduk = $this->db->get_where('tbproduk', ['id_produk' => $this->input->post('id_produk', true)])->row_array();
         $kodenum = $this->GeneralModel->random_number(3);
         $arr = [
             'kode_penjualan' => $this->GeneralModel->random_semua(16),
             'id_customer' => $this->input->post('id_customer', true),
-            'id_kalender' => $this->input->post('id_kalender', true),
+            'id_produk' => $this->input->post('id_produk', true),
             'kode_akunbank' => $this->input->post('kode_akunbank', true),
             'qty' => $this->input->post('qty', true),
-            'last_price' => $getkalender['harga'],
+            'last_price' => $getproduk['harga'],
             'alamat_kirim' => $this->input->post('alamat_kirim', true),
             'no_hp' => $this->input->post('no_hp', true),
             'catatan_member' => $this->input->post('catatan_member', true),
@@ -113,7 +113,7 @@ class Pemesanan extends REST_Controller
         $id = $this->get('id');
         $kodebarang = $this->get('kodebarang');
         $cek = $this->db->get_where('tbcustomer', ['id' => $id])->row_array();
-        $cekdata = $this->db->get_where('tbkalender', ['id_kalender' => $kodebarang])->row_array();
+        $cekdata = $this->db->get_where('tbproduk', ['id_produk' => $kodebarang])->row_array();
         $getbank = $this->db->get('akunbank')->result_array();
         $data = [
             'databank' => $getbank,

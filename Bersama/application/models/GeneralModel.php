@@ -8,7 +8,11 @@ class GeneralModel extends CI_Model
   public function getData($tabel, $key = "")
   {
     $query = "";
-    if ($tabel == "getbanner") {
+    if ($tabel == "getproduk") {
+      $query = "SELECT * from tbproduk a 
+      left join tbkatalog b on a.id_katalog=b.id_katalog 
+      $key
+      order by a.nama_produk asc";
     } else {
       $query = "SELECT * FROM " . $tabel . " WHERE status = '1'";
     }
@@ -22,10 +26,15 @@ class GeneralModel extends CI_Model
     $query = "";
     if ($tabel == "detailpesanan") {
       $query = "SELECT a.*, b.*, c.nama, d.* from penjualan a 
-      left join tbkalender b on a.id_kalender=b.id_kalender  
+      left join tbproduk b on a.id_produk=b.id_produk  
       left join tbcustomer c on a.id_customer=c.id  
       left join akunbank d on a.kode_akunbank=d.kode_akunbank 
       where a.kode_penjualan='$key'";
+    } else if ($tabel == "getproduk") {
+      $query = "SELECT * from tbproduk a 
+      left join tbkatalog b on a.id_katalog=b.id_katalog 
+      where a.id_produk='$key' 
+      order by a.nama_produk asc";
     } else {
       $query = "SELECT * FROM " . $tabel . " WHERE status != '0'";
     }
