@@ -10,7 +10,7 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-4 text-gray-800"><?= $title; ?> </h1>
         <?php
-        foreach ($tbproduk as $row) {
+        foreach ($tbkalender as $row) {
         ?>
             <div class="row">
 
