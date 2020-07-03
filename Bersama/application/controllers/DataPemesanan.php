@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DataPemesanan extends CI_Controller
+class Datapemesanan extends CI_Controller
 {
     function __construct()
     {
