@@ -7,7 +7,6 @@ class Katalog extends CI_Controller
     {
         parent::__construct();
         $this->load->model('data');
-        
     }
     public function index()
     {
@@ -35,7 +34,7 @@ class Katalog extends CI_Controller
     public function kalender()
     {
         $data = array(
-            "tbkalender"=>$this->data->getkalender()
+            "tbproduk" => $this->data->getproduk()
         );
         $data['title'] = 'katalog';
         $this->load->view('templates/header', $data);
@@ -46,7 +45,7 @@ class Katalog extends CI_Controller
     public function undangan()
     {
         $data = array(
-            "tbundangan"=>$this->data->getundangan()
+            "tbproduk" => $this->data->getproduk()
         );
         $data['title'] = 'katalog';
         $this->load->view('templates/header', $data);
@@ -54,6 +53,4 @@ class Katalog extends CI_Controller
         //$this->load->view('templates/topbar', $data);
         $this->load->view('katalog/undangan', $data);
     }
-
-    }
-
+}
