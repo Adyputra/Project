@@ -1,20 +1,19 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DataPemesanan extends CI_Controller
+class Datapemesanan extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
         $this->load->model('data');
-        
     }
     public function index()
     {
         $data = array(
-            "penjualan"=>$this->data->getdatapenjualan()
+            "penjualan" => $this->data->getdatapenjualan()
         );
-        
+
         $data['title'] = 'Data Pemesanan';
         $data['admin'] = $this->db->get_where('tbadmin', ['email' =>
         $this->session->userdata('email')])->row_array();
@@ -25,9 +24,10 @@ class DataPemesanan extends CI_Controller
         $this->load->view('datapemesanan/index', $data);
         $this->load->view('templates/footer');
     }
-    public function print(){
+    public function print()
+    {
         $data = array(
-            "penjualan"=>$this->data->getdatapenjualan()
+            "penjualan" => $this->data->getdatapenjualan()
         );
         $this->load->view('templates/header', $data);
         //$this->load->view('templates/sidebar', $data);

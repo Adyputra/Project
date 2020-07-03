@@ -35,7 +35,7 @@
                     <thead>
                         <tr>
                             <th>Kode Penjualan</th>
-                            <th>Id Kalender</th>
+                            <th>Id Produk</th>
                             <th>Id Customer</th>
                             <th>Kode Akun Bank</th>
                             <th>qty</th>
@@ -56,7 +56,7 @@
                         <tbody>
                             <tr>
                                 <td><?php echo $row->kode_penjualan; ?></td>
-                                <td><?php echo $row->id_kalender; ?></td>
+                                <td><?php echo $row->id_produk; ?></td>
                                 <td><?php echo $row->id_customer; ?></td>
                                 <td><?php echo $row->kode_akunbank; ?></td>
                                 <td><?php echo $row->qty; ?></td>
