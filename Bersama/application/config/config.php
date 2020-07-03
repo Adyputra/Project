@@ -24,7 +24,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 
-$config['base_url'] = 'http://localhost/project/Bersama/';
+// $config['base_url'] = 'http://localhost/project/Bersama/';
+$config['base_url'] = 'http://silaper.wsjti.com';
 
 /*
 |--------------------------------------------------------------------------
